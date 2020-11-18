@@ -43,14 +43,19 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
+        // ЧПУ
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            // Правила для контроллеров
             'rules' => [
+                // если в url придет hello то вызывается контроллер ArticleController и экшн actionHello()
+                // лучше сделать так. выделить отдельный файл для своего конфига и include чтоб не кидать все в общую кучу
+                'all' => 'article/all',
+                'hello/<id:\d+>' => 'user/view',
             ],
+
         ],
-        */
     ],
     'params' => $params,
 ];
