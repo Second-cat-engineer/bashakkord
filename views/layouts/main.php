@@ -63,6 +63,10 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+
+        // переменная в которую передасться при сборке страницы вид
+        // т.е. сначала рендериться страница index.php, потом рендерит шаблон передавая его в переменную
+        // т.е $content это вид, а все остальное шаблон
         <?= $content ?>
     </div>
 </div>
