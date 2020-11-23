@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Article;
+use Yii;
 use yii\web\Controller;
 
 // User является id контроллера
@@ -12,7 +13,14 @@ class ArticleController extends Controller
     // по умолчанию используется шаблон main.php
     // для того чтобы использовать свой
     // можно и в экшне задавать, но принято в контроллере
-    //public $layout = 'article';
+    public $layout = 'stepbystep';
+
+    public function actionArticle()
+    {
+        //$this->layout = 'article';
+        $text = 'art';
+        return $this->render('article', ['text' => $text]);
+    }
 
     public function actionAll()
     {
@@ -69,5 +77,13 @@ class ArticleController extends Controller
         $articles = Article::find()->where(['id' => 1])->all();
         var_dump($articles);
         //return 'hello, saf';
+    }
+
+    public function actionCreate()
+    {
+        //$res = Yii::$app->db->createCommand('SELECT * FROM articles')->queryAll();
+        //$res = Yii::$app->db->createCommand('SELECT title FROM articles')->queryColumn();
+        $res = Yii::$app->db->createCommand('SELECT COUNT(*) FROM articles')->queryScalar();
+        var_dump($res);
     }
 }
